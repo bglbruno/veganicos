@@ -1,0 +1,83 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  
+  color: #5a5a5a;
+}
+a {
+  color: #00B7FF;
+}
+section.page{
+	margin: 0;
+	padding: 150px 0;
+}
+section.page:last-child{
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+section.page.inicio .descricao section.apresentacao{
+	padding: 30px;
+	background-color: #7799ff;
+}
+section.page.inicio .descricao section.seja-vegano{
+	padding: 30px;
+}
+section.page.inicio .descricao section.seja-vegano img{
+	margin-bottom: 30px;
+}
+section.page.inicio .descricao section.seja-vegano a{
+	font-size: 1em;
+}
+section.page.encomenda{
+	background-color: #7799ff;
+}
+section.page.encomenda div.viabilidade-entrega div.box-map{
+	margin-top: 30px;
+	padding: 20px;
+	background-color: #fff;
+}
+section.page.encomenda div.viabilidade-entrega div.box-map .map{
+	height: 400px;
+}
+section.page.encomenda div.viabilidade-entrega div.box-map .map #map_canvas{height: 93%;}
+
+section.page.encomenda div.viabilidade-entrega div.title-encomenda h2{
+	font-family: 'The Girl Next Door', cursive;
+	color: #eee;
+	font-size: 7em;
+	margin: 0;
+}
+section.page.encomenda div.viabilidade-entrega div.title-encomenda h2 img{
+	background-color: #fff;
+	padding: 10px;
+}
+section.page.encomenda div.viabilidade-entrega div.title-encomenda{
+	margin-bottom: 20px;
+}
+section.page.encomenda div.viabilidade-entrega span.help-block{
+	color: #eee;
+}
+section.page.contato{
+	background-color: #eee;
+}
+section.page.contato .row.contato{
+	border: 40px solid #00cc55;
+	background-color: #fff;
+	padding: 40px;
+}
+section.page.contato .row.contato div.form-contato h4{ 
+	font-weight: 900;
+	margin-bottom: 40px; 
+}
+section.rodape{
+	background-color: #222;
+	color: #eee;
+}
+section.rodape div{
+	padding: 10px;
+	padding-left: 20px;
+}
+section.rodape div h4{
+	font-weight: 900;
+	font-family: Verdana, Geneva, sans-serif;
+	margin-bottom: 20px;
+}
