@@ -39,16 +39,27 @@ section.page.encomenda div.viabilidade-entrega div.box-map .map{
 	height: 400px;
 }
 section.page.encomenda div.viabilidade-entrega div.box-map .map #map_canvas{height: 93%;}
-
+section.page.encomenda div.viabilidade-entrega div.title-encomenda{
+	padding-bottom: 20px;
+	overflow: hidden;
+}
 section.page.encomenda div.viabilidade-entrega div.title-encomenda h2{
 	font-family: 'The Girl Next Door', cursive;
 	color: #eee;
 	font-size: 7em;
 	margin: 0;
 }
-section.page.encomenda div.viabilidade-entrega div.title-encomenda h2 img{
+@media screen and (max-width: 768px) {
+	section.page.encomenda div.viabilidade-entrega div.title-encomenda h2{
+		padding-top: 20px;
+		font-size: 3em;
+		text-align: center;
+	}	
+}
+section.page.encomenda div.viabilidade-entrega div.title-encomenda img{
 	background-color: #fff;
 	padding: 10px;
+	margin: 0 auto;
 }
 section.page.encomenda div.viabilidade-entrega div.title-encomenda{
 	margin-bottom: 20px;

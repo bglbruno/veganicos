@@ -76,8 +76,10 @@
 					<div class="col-sm-12 descricao">
 					
 						<div class="row">
-							<div class="col-sm-8 apresentacao">
-								
+							<div class="col-sm-8">
+								<section class="apresentacao">
+									
+								</section>
 							</div>
 						
 							<div class="col-sm-4">
@@ -141,11 +143,16 @@
 				
 				<div class="row viabilidade-entrega">
 					<div class="title-encomenda">
-						<h2><img alt="Encomendas" src="/images/icon-gift.png" class="img-circle" width="100" height="100"> Encomendas</h2>
+						<div class="col-sm-2 text-center">
+							<img alt="Encomendas" src="/images/icon-gift.png" class="img-circle img-responsive" width="100" height="100">
+						</div>
+						<div class="col-sm-10">
+							<h2>Encomendas</h2>
+						</div>
 					</div>
 					
 					<div class="col-sm-10">
-						<input type="text" class="form-control input-lg text-center" id="cep" placeholder="Digite seu cep">
+						<input type="text" maxlength="9" class="form-control input-lg text-center" id="cep" placeholder="Digite seu cep">
 						<span class="help-block">Precisamos saber sua localização para verificar a viabilidade de entrega.</span>
 					</div>
 					<div class="col-sm-2">
@@ -313,11 +320,11 @@
 	<script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
 	<script src="/javascripts/bootstrap.min.js"></script>
 	<script src="/javascripts/jquery.scroll.it.js"></script>
-	<script src="/javascripts/jquery.masked.input.js"></script>
 	<script src="/javascripts/maps.js"></script>
 	<div id="fb-root"></div>
 	<script>
 		$(function() {
+			
 			$.scrollIt();
 			var d = new Date();
 			$("span.year").html(d.getFullYear());
@@ -328,13 +335,13 @@
 					$("#consulta_cep").trigger("click");
 				}
 				if( $(this).val() == "" ){
-					$("#status-pesquisa-cep").html("").attr("class","alert");
+					$("#status-pesquisa-cep").html("").attr("class","").addClass("alert");
 				}
 			});
 			
 			$("#consulta_cep").on("click", function(e){
 				if($("#cep").val() != ""){
-					$("#status-pesquisa-cep").html("Pesquisando seu cep...");
+					$("#status-pesquisa-cep").html("Pesquisando seu cep...").attr("class","").addClass("alert");
 					var url = "http://maps.googleapis.com/maps/api/geocode/json?components=country:BR|postal_code:" + $("#cep").val() + "&sensor=false";
 					$.getJSON( url, function( data ) {
 						if(data.status == "OK"){
@@ -358,7 +365,6 @@
 				}
 			});
 			
-			$("#cep").mask("99999-999");
 		});
 		
 		(function(d, s, id) {
