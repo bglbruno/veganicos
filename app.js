@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -24,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+	app.use(express.errorHandler());
 }
 
 app.get('/', routes.index);
@@ -37,6 +36,23 @@ io.enable("browser client minification");
 io.enable("browser client etag");
 io.enable("browser client gzip");
 
-server.listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+var sendgrid = require('sendgrid')(
+	process.env.SENDGRID_USERNAME,
+	process.env.SENDGRID_PASSWORD
+);
+
+sendgrid.send({
+	to : 'bgl.bruno@gmail.com',
+	from : 'bgl.bruno@gmail.com',
+	subject : 'Hello World',
+	text : 'Sending email with NodeJS through SendGrid!'
+}, function(err, json) {
+	if (err) {
+		return console.error(err);
+	}
+	console.log(json);
+});
+
+server.listen(app.get('port'), function() {
+	console.log('Express server listening on port ' + app.get('port'));
 });

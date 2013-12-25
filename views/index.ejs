@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
 
 <!--
@@ -21,7 +21,7 @@
 <link href='http://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=The+Girl+Next+Door' rel='stylesheet' type='text/css'>
 
-<title>Vegânicos</title>
+<title><%= title %></title>
 
 <link href="/stylesheets/style.css" rel="stylesheet">
 <link href="/stylesheets/bootstrap.css" rel="stylesheet">
@@ -235,17 +235,17 @@
 							<div class="col-sm-offset-2 col-sm-12">
 								<h4>Mande-nos uma mensagem</h4>
 							</div>
-							<form class="form-horizontal" role="form">
+							<form id="form_contato" class="form-horizontal" role="form">
 								<div class="form-group">
 									<label for="contato_email" class="col-sm-2 control-label">Email</label>
 									<div class="col-sm-10">
-										<input type="email" class="form-control" id="contato_email" placeholder="Email">
+										<input type="email" class="form-control" id="contato_email" placeholder="Email" required="required">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="contato_assunto" class="col-sm-2 control-label">Assunto</label>
 									<div class="col-sm-10">
-										<select class="form-control" id="contato_assunto">
+										<select class="form-control" id="contato_assunto" required="required">
 											<option value="">Assunto</option>
 											<option value="sugestao">Sugestão</option>
 											<option value="evento">Evento</option>
@@ -257,7 +257,7 @@
 								<div class="form-group">
 									<label for="contato_mensagem" class="col-sm-2 control-label">Mensagem</label>
 									<div class="col-sm-10">
-										<textarea id="contato_mensagem" class="form-control" rows="3"></textarea>
+										<textarea id="contato_mensagem" class="form-control" required="required" rows="3"></textarea>
 									</div>
 								</div>
 								<div class="form-group">
@@ -321,9 +321,12 @@
 	<script src="/javascripts/bootstrap.min.js"></script>
 	<script src="/javascripts/jquery.scroll.it.js"></script>
 	<script src="/javascripts/maps.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
 	<div id="fb-root"></div>
 	<script>
 		$(function() {
+			
+			var socket = io.connect(document.URL);
 			
 			$.scrollIt();
 			var d = new Date();
@@ -365,6 +368,15 @@
 				}
 			});
 			
+			$("#form_contato").on("submit", function(e){
+				e.preventDefault();
+				
+				/* socket.emit("form_contato_submit", $(this).serialize()); */
+				console.log($(this).serialize());
+				
+			});
+			
+			
 		});
 		
 		(function(d, s, id) {
@@ -379,4 +391,3 @@
 	</script>
 </body>
 </html>
-
