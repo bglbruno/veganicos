@@ -4,7 +4,7 @@ body {
   color: #5a5a5a;
 }
 a {
-  color: #00B7FF;
+  color: #7799ff;
 }
 section.page{
 	margin: 0;
@@ -91,4 +91,9 @@ section.rodape div h4{
 	font-weight: 900;
 	font-family: Verdana, Geneva, sans-serif;
 	margin-bottom: 20px;
+}
+section.page.login{
+	padding-top: 100px;
+	padding-bottom: 100px;
+	background-color: #f3f3f3;
 }

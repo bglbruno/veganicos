@@ -3,7 +3,7 @@
 <head>
 
 <!--
- __   __   ______     ______     ______     __   __     __     ______     ______     ______    
+ __   __   ______     ______     ______     __   __     __     ______     ______     ______
 /\ \ / /  /\  ___\   /\  ___\   /\  __ \   /\ "-.\ \   /\ \   /\  ___\   /\  __ \   /\  ___\   
 \ \ \'/   \ \  __\   \ \ \__ \  \ \  __ \  \ \ \-.  \  \ \ \  \ \ \____  \ \ \/\ \  \ \___  \  
  \ \__|    \ \_____\  \ \_____\  \ \_\ \_\  \ \_\\"\_\  \ \_\  \ \_____\  \ \_____\  \/\_____\ 
@@ -65,10 +65,61 @@
 
 	<!-- content -->
 	<div class="main">
+		
+		<section class="page login">
+			<div class="container">
+
+				<section class="block-center text-center">
+					<form class="form-inline" role="form" id="login">
+						<div class="form-group">
+							<input type="email" class="form-control" id="login" placeholder="Email">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" id="senha" placeholder="Senha">
+						</div>
+						<button type="submit" class="btn btn-default">Entrar</button>
+					</form>
+				</section>
+
+
+				<section class="block-center text-center hide" id="adm">
+					<div class="col-sm-offset-3 col-sm-6">
+						<div class="col-sm-12">
+							<h2>Adicionar opções</h2>
+							<form class="form-horizontal" id="form_adicionar">
+								<div class="col-sm-12">
+									<div class="form-group">
+										<input type='text' id="item_nome" placeholder='Nome' class="form-control" />
+									</div>
+								</div>
+								<div class="col-sm-12">
+									<button type='submit' class='btn btn-primary'>Salvar</button>
+								</div>
+							</form>
+						</div>
+						<div class="col-sm-12">
+							<h2>Lista de opções</h2>
+							<table id="lista" class="table table-striped table-bordered table-hover table-condensed">
+								<thead>
+									<tr>
+										<th class="text-center">#</th>
+										<th class="text-center">Nome</th>
+									</tr>
+								</thead>
+								<tbody>
+									
+								</tbody>
+							</table>
+							<span id="lista_error" class="hide">Não foi possível carregar lista</span>
+						</div>
+					</div>
+				</section>
+			</div>
+			
+		</section>
 
 
 		<!-- INICIO -->
-		
 		
 		<section id="inicio" class="page inicio" data-scroll-index="0">
 			<div class="container">
@@ -311,10 +362,12 @@
 						<p>Coryright &copy; <span class="year"></span> Vegânicos<br/>Todos direitos reservados</p>
 						<p>Desenvolvido e desenhado por <a href="http://facebook.com/bglbruno" target="_blank">Bruno Gonçales</a></p>
 					</div>
-					
 				</div>
 			</div>
 		</section>
+		
+		
+		
 	</div>
 
 	<script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
@@ -343,9 +396,10 @@
 			});
 			
 			$("#consulta_cep").on("click", function(e){
-				if($("#cep").val() != ""){
+				var cep =  $("#cep").val();
+				if(cep != ""){
 					$("#status-pesquisa-cep").html("Pesquisando seu cep...").attr("class","").addClass("alert");
-					var url = "http://maps.googleapis.com/maps/api/geocode/json?components=country:BR|postal_code:" + $("#cep").val() + "&sensor=false";
+					var url = "http://maps.googleapis.com/maps/api/geocode/json?components=country:BR|postal_code:" + cep + "&sensor=false";
 					$.getJSON( url, function( data ) {
 						if(data.status == "OK"){
 							var cidade = data.results[0].address_components[1].long_name;
@@ -356,9 +410,8 @@
 							if(cidade.toLowerCase() == "guarulhos"){
 								$("#status-pesquisa-cep").html("Cep de Guarulhos :)").addClass("alert-success");
 							}else{
-								$("#status-pesquisa-cep").html("Esse cep não é de Guarulhos :(").addClass("alert-warning");
+								$("#status-pesquisa-cep").html("Desculpe, só aceitamos encomendas de Guarulhos :(").addClass("alert-warning");
 							}
-							
 						}else{
 							$("#status-pesquisa-cep").html("Cep inválido. Tente novamente.").addClass("alert-danger");
 						}
@@ -371,14 +424,61 @@
 			$("#form_contato").on("submit", function(e){
 				e.preventDefault();
 				
-				/* socket.emit("form_contato_submit", $(this).serialize()); */
-				console.log($(this).serialize());
+				var contato = {
+					email: $("#contato_email").val(),
+					assunto: $("#contato_assunto").val(),
+					mensagem: $("#contato_mensagem").val()
+				};
 				
+				socket.emit("form-contato-submit", contato);
 			});
 			
+			$("#login").on("click", function(e){
+				socket.emit("login", {login: "admin", senha: "admin"}, function(login){
+					console.log(login.sucesso);
+					if(login.sucesso){
+						$("#adm").removeClass("hide").slideDown();
+					}else{
+						$("#adm").hide();
+					}
+				});
+				e.preventDefault();
+			});
 			
+			$("#form_adicionar").on("submit", function(e){
+				e.preventDefault();
+				
+				var $item = $("#item_nome");
+				if($item.val() != ""){
+					var item = {item: $item.val()};
+					socket.emit("adiciona-item", item);
+					$item.val("");
+				}
+				$item.focus();
+			});
+			
+			socket.on("lista-itens", function(res){
+				if(res.error){
+					$("#lista_error").show();
+				}else{
+					$("#lista_error").hide();
+					$("#lista tbody").html("");
+					$.each(res.itens, function(index, value) {
+						
+						var row = 
+						"<tr>" +
+							"<td class='text-center'>"+(index+1)+"</td>" +
+							"<td class='text-center'>"+value.nome+"</td>" +
+						"</tr>";
+						$("#lista tbody").prepend(row);
+						
+					});
+					
+				}
+			});
+
 		});
-		
+
 		(function(d, s, id) {
 			var js, fjs = d.getElementsByTagName(s)[0];
 			if (d.getElementById(id))
