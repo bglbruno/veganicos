@@ -65,62 +65,8 @@
 
 	<!-- content -->
 	<div class="main">
-		
-		<section class="page login">
-			<div class="container">
-
-				<section class="block-center text-center">
-					<form class="form-inline" role="form" id="login">
-						<div class="form-group">
-							<input type="email" class="form-control" id="login" placeholder="Email">
-						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" id="senha" placeholder="Senha">
-						</div>
-						<button type="submit" class="btn btn-default">Entrar</button>
-					</form>
-				</section>
-
-
-				<section class="block-center text-center hide" id="adm">
-					<div class="col-sm-offset-3 col-sm-6">
-						<div class="col-sm-12">
-							<h2>Adicionar opções</h2>
-							<form class="form-horizontal" id="form_adicionar">
-								<div class="col-sm-12">
-									<div class="form-group">
-										<input type='text' id="item_nome" placeholder='Nome' class="form-control" />
-									</div>
-								</div>
-								<div class="col-sm-12">
-									<button type='submit' class='btn btn-primary'>Salvar</button>
-								</div>
-							</form>
-						</div>
-						<div class="col-sm-12">
-							<h2>Lista de opções</h2>
-							<table id="lista" class="table table-striped table-bordered table-hover table-condensed">
-								<thead>
-									<tr>
-										<th class="text-center">#</th>
-										<th class="text-center">Nome</th>
-									</tr>
-								</thead>
-								<tbody>
-									
-								</tbody>
-							</table>
-							<span id="lista_error" class="hide">Não foi possível carregar lista</span>
-						</div>
-					</div>
-				</section>
-			</div>
-			
-		</section>
-
 
 		<!-- INICIO -->
-		
 		<section id="inicio" class="page inicio" data-scroll-index="0">
 			<div class="container">
 				<div class="row">
@@ -129,7 +75,7 @@
 						<div class="row">
 							<div class="col-sm-8">
 								<section class="apresentacao">
-									
+									Somos os vegânicos
 								</section>
 							</div>
 						
@@ -433,50 +379,6 @@
 				socket.emit("form-contato-submit", contato);
 			});
 			
-			$("#login").on("click", function(e){
-				socket.emit("login", {login: "admin", senha: "admin"}, function(login){
-					console.log(login.sucesso);
-					if(login.sucesso){
-						$("#adm").removeClass("hide").slideDown();
-					}else{
-						$("#adm").hide();
-					}
-				});
-				e.preventDefault();
-			});
-			
-			$("#form_adicionar").on("submit", function(e){
-				e.preventDefault();
-				
-				var $item = $("#item_nome");
-				if($item.val() != ""){
-					var item = {item: $item.val()};
-					socket.emit("adiciona-item", item);
-					$item.val("");
-				}
-				$item.focus();
-			});
-			
-			socket.on("lista-itens", function(res){
-				if(res.error){
-					$("#lista_error").show();
-				}else{
-					$("#lista_error").hide();
-					$("#lista tbody").html("");
-					$.each(res.itens, function(index, value) {
-						
-						var row = 
-						"<tr>" +
-							"<td class='text-center'>"+(index+1)+"</td>" +
-							"<td class='text-center'>"+value.nome+"</td>" +
-						"</tr>";
-						$("#lista tbody").prepend(row);
-						
-					});
-					
-				}
-			});
-
 		});
 
 		(function(d, s, id) {

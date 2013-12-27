@@ -55,47 +55,7 @@ server.listen(app.get('port'), function() {
 	console.log('Express server listening on port ' + app.get('port'));
 });
 
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/itens');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'DB connection error:'));
-
-var itemchema = mongoose.Schema({
-	nome : String
-})
-var Item = mongoose.model('Item', itemchema);
-
 io.on("connection", function(client){
-	console.log("cliente conectado");
-	
-	
-	client.on("login", function(usuario, callback){
-		if(usuario.login == "admin" && usuario.senha == "admin"){
-			callback({
-				sucesso: true
-			});
-			Item.find(function(error, itens) {
-				client.emit("lista-itens", ({error: error, itens: itens}));
-			});
-		}else{
-			callback({
-				sucesso: false
-			});
-		}
-	});
-	
-	client.on("adiciona-item", function(dados){
-		var item = new Item({nome: dados.item});
-		item.save(function(error, item) {
-			
-			Item.find(function(error, itens) {
-				client.emit("lista-itens", ({error: error, itens: itens}));
-			});
-			
-		});
-		
-	});
-	
 	client.on("form-contato-submit", function(contato){
 		sendgrid.send({
 			to : 'bgl.bruno@gmail.com',
