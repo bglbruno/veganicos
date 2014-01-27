@@ -1,75 +1,49 @@
-body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  
-  color: #5a5a5a;
-}
-a {
-  color: #7799ff;
-}
-section.page{
-	margin: 0;
-	padding: 150px 0;
-}
-section.page:last-child{
-	padding-bottom: 0;
-	margin-bottom: 0;
-}
+body {font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;color: #5a5a5a;}
+a{color: #7799ff;}
+section.page{margin: 0;padding: 150px 0;}
+section.page:last-child{padding-bottom: 0;margin-bottom: 0;}
+
+/* INICIO */
+
+section.page.inicio{padding-top: 100px;}
 section.page.inicio .descricao section.apresentacao{
 	padding: 30px;
-	background-color: #7799ff;
+	background-color: #fff;
 }
-section.page.inicio .descricao section.seja-vegano{
-	padding: 30px;
-}
-section.page.inicio .descricao section.seja-vegano img{
-	margin-bottom: 30px;
-}
-section.page.inicio .descricao section.seja-vegano a{
-	font-size: 1em;
-}
+
+/* ENCOMENDA */
+
 section.page.encomenda{
 	background-color: #7799ff;
 }
-section.page.encomenda div.viabilidade-entrega div.box-map{
-	margin-top: 30px;
-	padding: 20px;
-	background-color: #fff;
-}
-section.page.encomenda div.viabilidade-entrega div.box-map .map{
-	height: 400px;
-}
-section.page.encomenda div.viabilidade-entrega div.box-map .map #map_canvas{height: 93%;}
-section.page.encomenda div.viabilidade-entrega div.title-encomenda{
+section.page.encomenda div.title-encomenda{
 	padding-bottom: 20px;
 	overflow: hidden;
 }
-section.page.encomenda div.viabilidade-entrega div.title-encomenda h2{
+section.page.encomenda div.title-encomenda h2{
 	font-family: 'The Girl Next Door', cursive;
 	color: #eee;
 	font-size: 7em;
 	margin: 0;
 }
 @media screen and (max-width: 768px) {
-	section.page.encomenda div.viabilidade-entrega div.title-encomenda h2{
+	section.page.encomenda div.title-encomenda h2{
 		padding-top: 20px;
 		font-size: 3em;
 		text-align: center;
 	}	
 }
-section.page.encomenda div.viabilidade-entrega div.title-encomenda img{
+section.page.encomenda div.title-encomenda img{
 	background-color: #fff;
 	padding: 10px;
 	margin: 0 auto;
 }
-section.page.encomenda div.viabilidade-entrega div.title-encomenda{
-	margin-bottom: 20px;
-}
-section.page.encomenda div.viabilidade-entrega span.help-block{
-	color: #eee;
-}
-section.page.contato{
-	background-color: #eee;
-}
+section.page.encomenda div.title-encomenda{margin-bottom: 20px;}
+
+/* CONTATO */
+
+section.page.contato{background-color: #eee;}
+section.page.contato div.social{overflow: hidden;}
 section.page.contato .row.contato{
 	border: 40px solid #00cc55;
 	background-color: #fff;
@@ -79,16 +53,26 @@ section.page.contato .row.contato div.form-contato h4{
 	font-weight: 900;
 	margin-bottom: 40px; 
 }
+
+/* RODAPE */
+
 section.rodape{
 	background-color: #222;
 	color: #eee;
+	overflow: hidden;
+	padding-top: 30px;
+	padding-bottom: 40px;
 }
-section.rodape div{
+section.rodape div.footer div.infos div{
 	padding: 10px;
 	padding-left: 20px;
 }
-section.rodape div h4{
+section.rodape div.footer div.infos div h4{
 	font-weight: 900;
 	font-family: Verdana, Geneva, sans-serif;
 	margin-bottom: 20px;
+}
+section.rodape div.footer div.veganismo div{
+	height: 200px;
+	line-height: 200px;
 }

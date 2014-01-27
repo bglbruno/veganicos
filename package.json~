@@ -30,6 +30,7 @@
     "torta"
   ],
   "author": "Bruno Gonçales Lima",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/bglbruno/veganicos/issues"
   },

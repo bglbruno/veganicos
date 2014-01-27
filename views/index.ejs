@@ -25,7 +25,6 @@
 
 <link href="/stylesheets/style.css" rel="stylesheet">
 <link href="/stylesheets/bootstrap.css" rel="stylesheet">
-<link href="/stylesheets/social.css" rel="stylesheet">
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -71,24 +70,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-12 descricao">
-					
-						<div class="row">
-							<div class="col-sm-8">
-								<section class="apresentacao">
-									Somos os vegânicos
-								</section>
-							</div>
 						
-							<div class="col-sm-4">
-								<section class="seja-vegano text-center">
-									<img src="/images/libertacao.png" alt="Torta de legumes" class="img-circle">
-									<p>Todos os nossos produtos, são livres de crueldade animal.</p>
-									<a href="http://sejavegano.com.br" target="_blank" class="btn btn-info btn-lg">Conheça o veganismo</a>
-								</section>
-							</div>
-						</div>
-						
-						<div class="row">
+						<div class="row opcoes-encomendas">
 							<div class="col-sm-4">
 								<ul class="list-group">
 									<li class="list-group-item">Tortas</li>
@@ -126,6 +109,21 @@
 								</ul>
 							</div>
 						</div>
+						
+						<div class="row">
+							<div class="col-sm-8">
+								<section class="apresentacao">
+									<div class="fb-like-box"
+										data-href="http://www.facebook.com/veganicos" data-width="700"
+										data-height="400" data-colorscheme="light"
+										data-show-faces="false" data-header="false" data-stream="true"
+										data-show-border="false"></div>
+								</section>
+							</div>
+						</div>
+						
+						
+						
 					</div>
 				</div>
 			</div>
@@ -138,81 +136,13 @@
 		<section id="encomendas" class="page encomenda" data-scroll-index="1">
 			<div class="container">
 				
-				<div class="row viabilidade-entrega">
-					<div class="title-encomenda">
-						<div class="col-sm-2 text-center">
-							<img alt="Encomendas" src="/images/icon-gift.png" class="img-circle img-responsive" width="100" height="100">
-						</div>
-						<div class="col-sm-10">
-							<h2>Encomendas</h2>
-						</div>
+				<div class="title-encomenda">
+					<div class="col-sm-2 text-center">
+						<img alt="Encomendas" src="/images/icon-gift.png" class="img-circle img-responsive" width="100" height="100">
 					</div>
-					
 					<div class="col-sm-10">
-						<input type="text" maxlength="9" class="form-control input-lg text-center" id="cep" placeholder="Digite seu cep">
-						<span class="help-block">Precisamos saber sua localização para verificar a viabilidade de entrega.</span>
+						<h2>Encomendas</h2>
 					</div>
-					<div class="col-sm-2">
-						<button id="consulta_cep" type="button" class="btn btn-default btn-lg">
-							<span class="glyphicon glyphicon-search"> Pesquisar</span>
-						</button>
-					</div>
-					
-					<div class="col-sm-12 box-map text-center">
-						<div class="alert" id="status-pesquisa-cep"></div>
-						<div class="map"><div id="map_canvas"></div></div>
-					</div>
-					
-				</div>
-				<div class="row formulario-encomenda">
-					<form class="hide form-horizontal" role="form">
-						
-						<div class="form-group">
-							<label for="email" class="col-sm-2 control-label">Email</label>
-							<div class="col-sm-10">
-								<input type="email" class="form-control" id="email" placeholder="Email">
-							</div>
-						</div>
-					
-						<div class="form-group">
-							<label for="produto_encomenda" class="col-sm-2 control-label">Encomenda</label>
-							<div class="col-sm-10">
-								<select id="produto_encomenda" class="form-control">
-									<option>Torta de legumes</option>
-									<option>Torta de espinafre</option>
-									<option>Torta de escarola</option>
-									<option>Pão-sem-queijo (Pão de queijo vegano)</option>
-									<option>Cupcake de chocolate</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="quantidade" class="col-sm-2 control-label">Quantidade</label>
-							<div class="col-sm-10">
-								<input type="number" class="form-control" id="quantidade" placeholder="Quantidade" value="1">
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label for="quantidade" class="col-sm-2 control-label">Pedido</label>
-							<div class="col-sm-10">
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label for="mensagem" class="col-sm-2 control-label">Mensagem</label>
-							<div class="col-sm-10">
-								<textarea id="mensagem" class="form-control" rows="3"></textarea>
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<div class="col-sm-offset-2 col-sm-12">
-								<button type="submit" class="btn btn-primary btn-lg">Encomendar</button>
-							</div>
-						</div>
-						
-					</form>
 				</div>
 			</div>
 		</section>
@@ -267,10 +197,17 @@
 							</form>
 
 						</div>
-						<div class="col-sm-4 social">
+						<div class="col-sm-4 social hidden-xs block-center">
 							<div class="fb-like-box"
 								data-href="http://www.facebook.com/veganicos"
 								data-colorscheme="light" data-show-faces="true"
+								data-header="false" data-stream="false" data-show-border="false"></div>
+						</div>
+						
+						<div class="col-sm-4 social visible-xs block-center">
+							<div class="fb-like-box"
+								data-href="http://www.facebook.com/veganicos" 
+								data-colorscheme="light" data-show-faces="false"
 								data-header="false" data-stream="false" data-show-border="false"></div>
 						</div>
 						
@@ -287,11 +224,13 @@
 		<section class="rodape">
 			<div class="container">
 				<div class="footer">
-					<div class="col-sm-4">
+					
+					<div class="col-sm-4 infos">
 						<h4>CONTATO</h4>
 						<ul class="list-unstyled">
 							<li>Oi - (11) 9 6956 0572 - Ingridhy</li>
 							<li>Oi - (11) 9 6878 2104 - Bruno</li>
+							<li>Oi - (11) 9 6231-3910 - Filipe</li>
 						</ul>
 						<p>
 							Não temos um local fixo, nossos produtos são preparados nas nossas casas
@@ -300,15 +239,32 @@
 					</div>
 					<div class="col-sm-4">
 						<h4>AMIGOS E FAMÍLIA</h4>
-						<p>Os vegânicos são Bruno Gonçales e Ingridhy Borges.</p>
-						<p>Um obrigado especial para Filipe Marini e Lais Trajano, que sempre nos ajudam.</p>
+						<p>Os vegânicos são Bruno Gonçales, Ingridhy Borges e Filipe Marini.</p>
+						<p>Um obrigado especial para Lais Trajano, Nelson Franco e Luci Aparecida, que sempre nos ajudam.</p>
 					</div>
 					<div class="col-sm-4">
 						<h4>LEGAL</h4>
 						<p>Coryright &copy; <span class="year"></span> Vegânicos<br/>Todos direitos reservados</p>
 						<p>Desenvolvido e desenhado por <a href="http://facebook.com/bglbruno" target="_blank">Bruno Gonçales</a></p>
 					</div>
+				
+					<div class="col-sm-12 veganismo">
+						
+						<div class="col-sm-4 block-center text-center">
+							<a href="http://sejavegano.com.br" target="_blank">Conheça o veganismo</a>
+						</div>
+						<div class="col-sm-4 block-center text-center">
+							<section class="seja-vegano text-center">
+								<img src="/images/libertacao-inverse.png" alt="Conheça o veganismo" class="img-circle">
+							</section>
+						</div>
+						<div class="col-sm-4 block-center text-center">
+							Nossos produtos são livres de crueldade animal.
+						</div>
+						
+					</div>
 				</div>
+					
 			</div>
 		</section>
 		
