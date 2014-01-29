@@ -1,20 +1,50 @@
-body {font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;color: #5a5a5a;}
+body {font-family: Verdana, Geneva, sans-serif; color: #5a5a5a;}
 a{color: #7799ff;}
 section.page{margin: 0;padding: 150px 0;}
 section.page:last-child{padding-bottom: 0;margin-bottom: 0;}
 
 /* INICIO */
 
-section.page.inicio{padding-top: 100px;}
+section.page.inicio{padding-top: 80px; background-color: #ffc273}
+section.page.inicio .descricao{
+	
+}
+section.page.inicio .descricao .jumbotron{
+	background-color: #ffd196;
+}
 section.page.inicio .descricao section.apresentacao{
-	padding: 30px;
-	background-color: #fff;
+	color: #a66e25;
+	margin: 70px 0;
+}
+section.page.inicio .descricao section.apresentacao p{
+	font-size: 1.5em;
+}
+
+section.page.inicio .descricao section.apresentacao h2{
+	font-size: 6em;
+	margin: 0;
+}
+@media screen and (max-width: 768px) {
+	section.page.inicio .descricao section.apresentacao p{
+		text-align: center;
+		margin-top: 20px;
+	}
+	section.page.inicio .descricao section.apresentacao h2{
+		font-size: 3em;
+		text-align: center;
+	}	
+}
+section.page.inicio .descricao .opcoes-encomendas{
+	padding: 50px 0;
+}
+section.page.inicio .descricao .opcoes-encomendas div{
+	padding: 30px 0;
 }
 
 /* ENCOMENDA */
 
 section.page.encomenda{
-	background-color: #7799ff;
+	background-color: #4f81a4;
 }
 section.page.encomenda div.title-encomenda{
 	padding-bottom: 20px;
@@ -22,7 +52,7 @@ section.page.encomenda div.title-encomenda{
 }
 section.page.encomenda div.title-encomenda h2{
 	font-family: 'The Girl Next Door', cursive;
-	color: #eee;
+	color: #fff;
 	font-size: 7em;
 	margin: 0;
 }
@@ -34,7 +64,7 @@ section.page.encomenda div.title-encomenda h2{
 	}	
 }
 section.page.encomenda div.title-encomenda img{
-	background-color: #fff;
+	border: 1px solid #fff;
 	padding: 10px;
 	margin: 0 auto;
 }
@@ -42,12 +72,11 @@ section.page.encomenda div.title-encomenda{margin-bottom: 20px;}
 
 /* CONTATO */
 
-section.page.contato{background-color: #eee;}
+section.page.contato{background-color: #4aa391; color: #186a5a}
 section.page.contato div.social{overflow: hidden;}
 section.page.contato .row.contato{
-	border: 40px solid #00cc55;
-	background-color: #fff;
-	padding: 40px;
+	background-color: #7bd1c0;
+	padding: 40px 0;
 }
 section.page.contato .row.contato div.form-contato h4{ 
 	font-weight: 900;
@@ -57,11 +86,14 @@ section.page.contato .row.contato div.form-contato h4{
 /* RODAPE */
 
 section.rodape{
-	background-color: #222;
+	background-color: #333;
 	color: #eee;
 	overflow: hidden;
 	padding-top: 30px;
 	padding-bottom: 40px;
+}
+section.rodape div.footer div{
+	margin-bottom: 40px;
 }
 section.rodape div.footer div.infos div{
 	padding: 10px;
