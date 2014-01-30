@@ -304,7 +304,6 @@
 	<script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
 	<script src="/javascripts/bootstrap.min.js"></script>
 	<script src="/javascripts/jquery.scroll.it.js"></script>
-	<script src="/javascripts/maps.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
 	<div id="fb-root"></div>
 	<script>
@@ -315,42 +314,6 @@
 			$.scrollIt();
 			var d = new Date();
 			$("span.year").html(d.getFullYear());
-			
-			$("#cep").on("keyup", function(e){
-				if(event.which == 13){
-					e.preventDefault();
-					$("#consulta_cep").trigger("click");
-				}
-				if( $(this).val() == "" ){
-					$("#status-pesquisa-cep").html("").attr("class","").addClass("alert");
-				}
-			});
-			
-			$("#consulta_cep").on("click", function(e){
-				var cep =  $("#cep").val();
-				if(cep != ""){
-					$("#status-pesquisa-cep").html("Pesquisando seu cep...").attr("class","").addClass("alert");
-					var url = "http://maps.googleapis.com/maps/api/geocode/json?components=country:BR|postal_code:" + cep + "&sensor=false";
-					$.getJSON( url, function( data ) {
-						if(data.status == "OK"){
-							var cidade = data.results[0].address_components[1].long_name;
-							var lat = data.results[0].geometry.location.lat;
-							var lon = data.results[0].geometry.location.lng;
-							updateMap(lat, lon);
-							
-							if(cidade.toLowerCase() == "guarulhos"){
-								$("#status-pesquisa-cep").html("Cep de Guarulhos :)").addClass("alert-success");
-							}else{
-								$("#status-pesquisa-cep").html("Desculpe, só aceitamos encomendas de Guarulhos :(").addClass("alert-warning");
-							}
-						}else{
-							$("#status-pesquisa-cep").html("Cep inválido. Tente novamente.").addClass("alert-danger");
-						}
-					});
-				}else{
-					$("#cep").focus();
-				}
-			});
 			
 			$("#form_contato").on("submit", function(e){
 				e.preventDefault();
