@@ -68,7 +68,6 @@ section.page.encomenda div.title-encomenda img{
 	padding: 10px;
 	margin: 0 auto;
 }
-section.page.encomenda div.title-encomenda{margin-bottom: 20px;}
 
 section.page.encomenda .cardapio{padding: 40px;font-size: 1.4em;}
 
@@ -82,7 +81,9 @@ section.page.encomenda .cardapio.sabores dl dd:LAST-CHILD{margin-bottom: 0;}
 section.page.encomenda .cardapio.opcoes{background-color: #4f627e;color: #fff;}
 section.page.encomenda span{color: #fff; display: block; margin-top: 20px;}
 
-
+section.page.encomenda .girassol-mandala{
+	padding-top: 100px;
+}
 /* CONTATO */
 
 section.page.contato{background-color: #4aa391; color: #186a5a}
@@ -95,7 +96,6 @@ section.page.contato .row.contato div.form-contato h4{
 	font-weight: 900;
 	margin-bottom: 40px; 
 }
-
 /* RODAPE */
 
 section.rodape{
