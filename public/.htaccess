@@ -1,0 +1,5 @@
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^www\.veganicos\.com.br& [NC]
+
+RewriteRule ^(.*)& http://veganicos.com.br/&1 [R=301,L]
